@@ -4,9 +4,9 @@ import Score from "./Score";
 function Question({ data }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null); // Track selected option
-  const [showExplanation, setShowExplanation] = useState(false); // Track if explanation is shown
-  const [isQuizCompleted, setIsQuizCompleted] = useState(false); // Track quiz completion
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [showExplanation, setShowExplanation] = useState(false);
+  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const questions = data?.questions || [];
   const currentQuestion = questions[currentIndex];
 
@@ -14,10 +14,10 @@ function Question({ data }) {
     event.preventDefault();
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
-      setSelectedOption(null); // Reset selection for the next question
-      setShowExplanation(false); // Hide explanation for the next question
+      setSelectedOption(null);
+      setShowExplanation(false);
     } else {
-      setIsQuizCompleted(true); // Mark the quiz as completed
+      setIsQuizCompleted(true);
     }
   };
 
@@ -29,13 +29,13 @@ function Question({ data }) {
 
   const handleOptionSelect = (isCorrect, index) => {
     if (selectedOption === null) {
-      setSelectedOption(index); // Mark the selected option
+      setSelectedOption(index);
       if (isCorrect) {
         setScore((prevScore) => prevScore + 4);
-        setShowExplanation(false); // Hide explanation for correct answers
+        setShowExplanation(false);
       } else {
         setScore((prevScore) => prevScore - 1);
-        setShowExplanation(true); // Show explanation for incorrect answers
+        setShowExplanation(true);
       }
     }
   };
@@ -75,7 +75,7 @@ function Question({ data }) {
                           onClick={() =>
                             handleOptionSelect(option.is_correct, index)
                           }
-                          disabled={selectedOption !== null} // Disable input after selection
+                          disabled={selectedOption !== null}
                         />
                         <span className="exp-number text-uppercase">
                           {index + 1}

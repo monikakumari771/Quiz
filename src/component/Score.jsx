@@ -18,7 +18,7 @@ function Score({ score, totalQuestions }) {
                       {score} / {totalQuestions * 4} points
                     </h3>
                     <button
-                      onClick={() => window.location.reload()} // Reloads the page for a new quiz
+                      onClick={() => window.location.reload()}
                       className="js-btn-next"
                     >
                       Restart Quiz
